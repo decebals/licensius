@@ -65,7 +65,7 @@ public class License {
 	}
 
 	public List<String> getFeatureNames() {
-		List<String> featureNames = new ArrayList<String>();
+		List<String> featureNames = new ArrayList<>();
 		Set keys = features.keySet();
 		for (Object key : keys) {
 			featureNames.add((String) key);
