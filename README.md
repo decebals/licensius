@@ -1,6 +1,6 @@
 Tiny License Framework for Java
 =====================
-It's an open source (Apache license) tiny license framework in Java, with zero dependencies and a quick learning curve.
+It's an open source (Apache license) tiny (only 14KB) license framework in Java, with zero dependencies and a quick learning curve.
 
 How to use
 -------------------
