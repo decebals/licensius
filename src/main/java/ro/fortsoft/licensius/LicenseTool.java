@@ -25,54 +25,54 @@ import java.util.Properties;
  */
 public class LicenseTool {
 
-	public static final String TEMPLATE_FILE = "template.dat";
-	public static final String PRIVATE_KEY_FILE = "private.key";
+    public static final String TEMPLATE_FILE = "template.dat";
+    public static final String PRIVATE_KEY_FILE = "private.key";
 
-	public static void main(String[] args) {
-		try {
-			new LicenseTool().createLicense();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            new LicenseTool().createLicense();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public static void generateLicense(Properties features, OutputStream output, String privateKeyFile) throws LicenseException {
-		LicenseGenerator.generateLicense(features, output, privateKeyFile);
-	}
+    public static void generateLicense(Properties features, OutputStream output, String privateKeyFile) throws LicenseException {
+        LicenseGenerator.generateLicense(features, output, privateKeyFile);
+    }
 
-	public void createLicense() throws Exception {
-		if (!existsKeyFiles()) {
-			generateKeys();
-		}
+    public void createLicense() throws Exception {
+        if (!existsKeyFiles()) {
+            generateKeys();
+        }
 
-		Properties properties = new Properties();
-		properties.load(new FileInputStream(TEMPLATE_FILE));
+        Properties properties = new Properties();
+        properties.load(new FileInputStream(TEMPLATE_FILE));
 
-		LicenseGenerator.generateLicense(properties, "private.key");
+        LicenseGenerator.generateLicense(properties, "private.key");
 
-		System.out.println("License generated in '" + LicenseManager.LICENSE_FILE + "' file.");
-	}
+        System.out.println("License generated in '" + LicenseManager.LICENSE_FILE + "' file.");
+    }
 
-	private boolean existsKeyFiles() {
-		return existsPrivateKeyFile() && existsPublicKeyFile();
-	}
+    private boolean existsKeyFiles() {
+        return existsPrivateKeyFile() && existsPublicKeyFile();
+    }
 
-	private boolean existsPrivateKeyFile() {
-		File privateKeyFile = new File(PRIVATE_KEY_FILE);
-		boolean exists = privateKeyFile.exists() && privateKeyFile.isFile();
-
-        return exists;
-	}
-
-	private boolean existsPublicKeyFile() {
-		File publicKeyFile = new File(LicenseManager.PUBLIC_KEY_FILE);
-		boolean exists = publicKeyFile.exists() && publicKeyFile.isFile();
+    private boolean existsPrivateKeyFile() {
+        File privateKeyFile = new File(PRIVATE_KEY_FILE);
+        boolean exists = privateKeyFile.exists() && privateKeyFile.isFile();
 
         return exists;
-	}
+    }
 
-	private void generateKeys() throws LicenseException {
-		KeyGenerator.createKeys(LicenseManager.PUBLIC_KEY_FILE, PRIVATE_KEY_FILE);
-	}
+    private boolean existsPublicKeyFile() {
+        File publicKeyFile = new File(LicenseManager.PUBLIC_KEY_FILE);
+        boolean exists = publicKeyFile.exists() && publicKeyFile.isFile();
+
+        return exists;
+    }
+
+    private void generateKeys() throws LicenseException {
+        KeyGenerator.createKeys(LicenseManager.PUBLIC_KEY_FILE, PRIVATE_KEY_FILE);
+    }
 
 }

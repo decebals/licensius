@@ -31,52 +31,52 @@ import java.util.Set;
  */
 public class License {
 
-	public static final String EXPIRATION_DATE = "expirationDate";
-	public static final DateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
+    public static final String EXPIRATION_DATE = "expirationDate";
+    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
-	private Properties features;
+    private Properties features;
 
-	public License(Properties features) throws LicenseException {
-		this.features = features;
-	}
+    public License(Properties features) throws LicenseException {
+        this.features = features;
+    }
 
-	public Date getExpirationDate() {
-		try {
-			return DATE_FORMAT.parse(getFeature(EXPIRATION_DATE));
-		} catch (ParseException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    public Date getExpirationDate() {
+        try {
+            return DATE_FORMAT.parse(getFeature(EXPIRATION_DATE));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	public String getExpirationDateAsString() {
-		return getFeature(EXPIRATION_DATE);
-	}
+    public String getExpirationDateAsString() {
+        return getFeature(EXPIRATION_DATE);
+    }
 
-	public boolean isExpired() {
-		return System.currentTimeMillis() > getExpirationDate().getTime();
-	}
+    public boolean isExpired() {
+        return System.currentTimeMillis() > getExpirationDate().getTime();
+    }
 
     public int getDaysTillExpire() {
         return DateUtils.getNumberOfDays(new Date(), getExpirationDate());
     }
 
     public String getFeature(String name) {
-		return features.getProperty(name);
-	}
+        return features.getProperty(name);
+    }
 
-	public List<String> getFeatureNames() {
-		List<String> featureNames = new ArrayList<>();
-		Set keys = features.keySet();
-		for (Object key : keys) {
-			featureNames.add((String) key);
-		}
+    public List<String> getFeatureNames() {
+        List<String> featureNames = new ArrayList<>();
+        Set keys = features.keySet();
+        for (Object key : keys) {
+            featureNames.add((String) key);
+        }
 
-		return featureNames;
-	}
+        return featureNames;
+    }
 
-	@Override
-	public String toString() {
-		return features.toString();
-	}
+    @Override
+    public String toString() {
+        return features.toString();
+    }
 
 }

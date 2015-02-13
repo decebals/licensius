@@ -27,44 +27,44 @@ import java.io.InputStream;
  */
 class IoUtils {
 
-	public static byte[] getBytesFromFile(String file) throws IOException {
-		return getBytes(new FileInputStream(file));
-	}
+    public static byte[] getBytesFromFile(String file) throws IOException {
+        return getBytes(new FileInputStream(file));
+    }
 
-	public static byte[] getBytesFromResource(String resource) throws IOException {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		byte[] bytes = getBytes(classLoader.getResourceAsStream(resource));
+    public static byte[] getBytesFromResource(String resource) throws IOException {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        byte[] bytes = getBytes(classLoader.getResourceAsStream(resource));
 
         return bytes;
-	}
+    }
 
-	public static void writeFile(String file, byte[] bytes) throws IOException {
-		FileOutputStream output = null;
-		try {
-			output = new FileOutputStream(file);
-			output.write(bytes);
-		} finally {
+    public static void writeFile(String file, byte[] bytes) throws IOException {
+        FileOutputStream output = null;
+        try {
+            output = new FileOutputStream(file);
+            output.write(bytes);
+        } finally {
             IoUtils.close(output);
-		}
-	}
+        }
+    }
 
-	public static byte[] getBytes(InputStream input) throws IOException {
-		ByteArrayOutputStream output = null;
-		try {
-	        output = new ByteArrayOutputStream();
+    public static byte[] getBytes(InputStream input) throws IOException {
+        ByteArrayOutputStream output = null;
+        try {
+            output = new ByteArrayOutputStream();
 
-	        byte buffer[] = new byte[1024];
-	        int length;
-	        while ((length = input.read(buffer)) >= 0) {
-	        	output.write(buffer, 0, length);
-	        }
+            byte buffer[] = new byte[1024];
+            int length;
+            while ((length = input.read(buffer)) >= 0) {
+                output.write(buffer, 0, length);
+            }
 
-			return output.toByteArray();
-		} finally {
+            return output.toByteArray();
+        } finally {
             IoUtils.close(output);
             IoUtils.close(input);
-		}
-	}
+        }
+    }
 
     /**
      * Silently closes a Closeable.
@@ -76,7 +76,7 @@ class IoUtils {
             if (closeable != null) {
                 closeable.close();
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             return e;
         }
 

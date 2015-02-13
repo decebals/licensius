@@ -20,16 +20,16 @@ package ro.fortsoft.licensius;
  */
 public class LicenseException extends Exception {
 
-	public LicenseException() {
-		super("Invalid license");
-	}
+    public LicenseException() {
+        super("Invalid license");
+    }
 
-	public LicenseException(Throwable cause) {
-		super("Invalid license", cause);
-	}
+    public LicenseException(Throwable cause) {
+        super("Invalid license", cause);
+    }
 
-	public LicenseException(String message) {
-		super(message);
-	}
+    public LicenseException(String message) {
+        super(message);
+    }
 
 }

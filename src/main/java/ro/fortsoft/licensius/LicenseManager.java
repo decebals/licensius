@@ -28,75 +28,75 @@ import java.util.Properties;
  */
 public class LicenseManager {
 
-	public static final String LICENSE_FILE = "license.dat";
-	public static final String PUBLIC_KEY_FILE = "public.key";
-	public static final String SIGNATURE = "signature";
+    public static final String LICENSE_FILE = "license.dat";
+    public static final String PUBLIC_KEY_FILE = "public.key";
+    public static final String SIGNATURE = "signature";
 
-	private static LicenseManager licenseManager = new LicenseManager();
+    private static LicenseManager licenseManager = new LicenseManager();
 
-	public static LicenseManager getInstance() {
-		return licenseManager;
-	}
+    public static LicenseManager getInstance() {
+        return licenseManager;
+    }
 
-	public boolean isValidLicense(License license) throws LicenseNotFoundException, LicenseException {
-		return !license.isExpired();
-	}
+    public boolean isValidLicense(License license) throws LicenseNotFoundException, LicenseException {
+        return !license.isExpired();
+    }
 
-	public License getLicense() throws LicenseNotFoundException, LicenseException {
-		if (!new File(LICENSE_FILE).exists()) {
-			throw new LicenseNotFoundException();
-		}
+    public License getLicense() throws LicenseNotFoundException, LicenseException {
+        if (!new File(LICENSE_FILE).exists()) {
+            throw new LicenseNotFoundException();
+        }
 
-		License license;
-		try {
-			license = loadLicense();
-		} catch (Exception e) {
-			throw new LicenseException(e);
-		}
+        License license;
+        try {
+            license = loadLicense();
+        } catch (Exception e) {
+            throw new LicenseException(e);
+        }
 
-		return license;
-	}
+        return license;
+    }
 
-	private License loadLicense() throws Exception {
-		Properties features = PropertiesUtils.loadProperties(LICENSE_FILE);
-		String signature = features.getProperty(SIGNATURE);
-		if (signature == null) {
-			throw new LicenseException();
-		}
-		features.remove(SIGNATURE);
-		String encoded = features.toString();
+    private License loadLicense() throws Exception {
+        Properties features = PropertiesUtils.loadProperties(LICENSE_FILE);
+        String signature = features.getProperty(SIGNATURE);
+        if (signature == null) {
+            throw new LicenseException();
+        }
+        features.remove(SIGNATURE);
+        String encoded = features.toString();
 
-		if (!verify(encoded.getBytes(), signature, readPublicKey(PUBLIC_KEY_FILE))) {
-			throw new LicenseException();
-		}
+        if (!verify(encoded.getBytes(), signature, readPublicKey(PUBLIC_KEY_FILE))) {
+            throw new LicenseException();
+        }
 
-		return new License(features);
-	}
+        return new License(features);
+    }
 
-	private PublicKey readPublicKey(String uri) throws Exception {
-		byte[] bytes;
+    private PublicKey readPublicKey(String uri) throws Exception {
+        byte[] bytes;
         File file = new File(uri);
-		if (file.exists() && file.isFile()) {
-			bytes = IoUtils.getBytesFromFile(uri);
-		} else {
-			bytes = IoUtils.getBytesFromResource(uri);
-		}
+        if (file.exists() && file.isFile()) {
+            bytes = IoUtils.getBytesFromFile(uri);
+        } else {
+            bytes = IoUtils.getBytesFromResource(uri);
+        }
 
-		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
-		KeyFactory keyFactory = KeyFactory.getInstance("DSA");
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("DSA");
 
-		return keyFactory.generatePublic(keySpec);
-	}
+        return keyFactory.generatePublic(keySpec);
+    }
 
-	private boolean verify(byte[] message, String signature, PublicKey publicKey) throws Exception {
-		Signature dsa = Signature.getInstance("SHA/DSA");
-		dsa.initVerify(publicKey);
-		dsa.update(message);
+    private boolean verify(byte[] message, String signature, PublicKey publicKey) throws Exception {
+        Signature dsa = Signature.getInstance("SHA/DSA");
+        dsa.initVerify(publicKey);
+        dsa.update(message);
 
         // TODO use java.util.Base64 from java 8
         byte[] decoded = DatatypeConverter.parseBase64Binary(signature);
 
         return dsa.verify(decoded);
-	}
+    }
 
 }
