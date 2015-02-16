@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * @author Decebal Suiu
  */
-class DateUtils {
+public class DateUtils {
 
     /**
      * Get number of days between two dates

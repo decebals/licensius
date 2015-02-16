@@ -28,14 +28,14 @@ import java.util.Properties;
 /**
  * @author Decebal Suiu
  */
-class LicenseGenerator {
+public class LicenseGenerator {
 
     public static String generateLicense(Properties features, OutputStream output, String privateKeyFile) throws LicenseException {
         try {
             String encoded = features.toString();
             String signature = sign(encoded.getBytes(), readPrivateKey(privateKeyFile));
 
-            Properties properties = new Properties();
+            Properties properties = new OrderedProperties();
             properties.putAll(features);
             properties.setProperty(LicenseManager.SIGNATURE, signature);
             properties.store(output, "License file");

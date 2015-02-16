@@ -45,7 +45,7 @@ public class LicenseTool {
             generateKeys();
         }
 
-        Properties properties = new Properties();
+        Properties properties = new OrderedProperties();
         properties.load(new FileInputStream(TEMPLATE_FILE));
 
         LicenseGenerator.generateLicense(properties, "private.key");

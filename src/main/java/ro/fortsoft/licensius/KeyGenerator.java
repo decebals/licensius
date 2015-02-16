@@ -22,7 +22,7 @@ import java.security.SecureRandom;
 /**
  * @author Decebal Suiu
  */
-class KeyGenerator {
+public class KeyGenerator {
 
     public static void createKeys(String publicUri, String privateUri) throws LicenseException {
         try {

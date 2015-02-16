@@ -23,13 +23,13 @@ import java.util.Properties;
 /**
  * @author Decebal Suiu
  */
-class PropertiesUtils {
+public class PropertiesUtils {
 
     public static Properties loadProperties(String propertiesFile) throws IOException {
         InputStream input = null;
         try {
             input = new FileInputStream(propertiesFile);
-            Properties properties = new Properties();
+            Properties properties = new OrderedProperties();
             properties.load(input);
 
             return properties;

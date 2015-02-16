@@ -25,7 +25,7 @@ import java.io.InputStream;
 /**
  * @author Decebal Suiu
  */
-class IoUtils {
+public class IoUtils {
 
     public static byte[] getBytesFromFile(String file) throws IOException {
         return getBytes(new FileInputStream(file));
