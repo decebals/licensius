@@ -25,7 +25,7 @@ In `example` folder you have an example for license template (input) and and its
 
 The content for `template.dat` can be (see example folder):
 ```
-expirationDate=9/12/08
+expirationDate=9/12/2020
 companyName=HomeOffice
 emailAddress=office@home.ro
 ```
@@ -34,7 +34,7 @@ In this case the content for `license.dat` (the license) is:
 ```
 #License file
 #Fri Feb 13 14:57:14 EET 2015
-expirationDate=9/12/08
+expirationDate=9/12/2020
 companyName=HomeOffice
 emailAddress=office@home.ro
 signature=MCwCFBEzxwxCPSrWwYj1lsfyDDMKEhMmAhRtDi2klZeDojMK3HBF7xaC3OBj9A\=\=
