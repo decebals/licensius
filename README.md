@@ -19,6 +19,8 @@ and to run `LicenseTool`.
 If the private key or the public key doesn't exists then licensius will create these files for you. The license will
 be a `license.dat` file.  
 
+By default Licensius using DSA algorithm (the key length in bits is 1024) for generating keys (private and public).
+
 In `example` folder you have an example for license template (input) and and its associated license (output).  
 
 The content for `template.dat` can be (see example folder):
