@@ -25,17 +25,17 @@ import java.util.Properties;
  */
 class PropertiesUtils {
 
-	public static Properties loadProperties(String propertiesFile) throws IOException {
-		InputStream input = null;
-		try {
-			input = new FileInputStream(propertiesFile);
-			Properties properties = new Properties();
-			properties.load(input);
+    public static Properties loadProperties(String propertiesFile) throws IOException {
+        InputStream input = null;
+        try {
+            input = new FileInputStream(propertiesFile);
+            Properties properties = new Properties();
+            properties.load(input);
 
-			return properties;
-		} finally {
+            return properties;
+        } finally {
             IoUtils.close(input);
-		}
-	}
+        }
+    }
 
 }

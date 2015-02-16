@@ -20,12 +20,12 @@ package ro.fortsoft.licensius;
  */
 public class LicenseNotFoundException extends Exception {
 
-	public LicenseNotFoundException() {
-		super("License file not found");
-	}
+    public LicenseNotFoundException() {
+        super("License file not found");
+    }
 
-	public LicenseNotFoundException(String message) {
-		super(message);
-	}
+    public LicenseNotFoundException(String message) {
+        super(message);
+    }
 
 }

@@ -24,17 +24,17 @@ import java.security.SecureRandom;
  */
 class KeyGenerator {
 
-	public static void createKeys(String publicUri, String privateUri) throws LicenseException {
-		try {
-			KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA");
-			keyGen.initialize(1024, new SecureRandom());
-			KeyPair keyPair = keyGen.generateKeyPair();
+    public static void createKeys(String publicUri, String privateUri) throws LicenseException {
+        try {
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA");
+            keyGen.initialize(1024, new SecureRandom());
+            KeyPair keyPair = keyGen.generateKeyPair();
 
-			IoUtils.writeFile(publicUri, keyPair.getPublic().getEncoded());
-			IoUtils.writeFile(privateUri, keyPair.getPrivate().getEncoded());
-		} catch (Exception e) {
-			throw new LicenseException(e);
-		}
-	}
+            IoUtils.writeFile(publicUri, keyPair.getPublic().getEncoded());
+            IoUtils.writeFile(privateUri, keyPair.getPrivate().getEncoded());
+        } catch (Exception e) {
+            throw new LicenseException(e);
+        }
+    }
 
 }
