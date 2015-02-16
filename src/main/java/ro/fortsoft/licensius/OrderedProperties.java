@@ -69,4 +69,19 @@ public class OrderedProperties extends Properties {
         return linkedMap.size();
     }
 
+    @Override
+    public String getProperty(String key) {
+        return (String) linkedMap.get(key);
+    }
+
+    @Override
+    public synchronized boolean containsKey(Object key) {
+        return linkedMap.containsKey(key);
+    }
+
+    @Override
+    public String toString() {
+        return linkedMap.toString();
+    }
+
 }

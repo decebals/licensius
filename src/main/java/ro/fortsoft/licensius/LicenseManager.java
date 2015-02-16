@@ -59,11 +59,11 @@ public class LicenseManager {
 
     private License loadLicense() throws Exception {
         Properties features = PropertiesUtils.loadProperties(LICENSE_FILE);
-        String signature = features.getProperty(SIGNATURE);
-        if (signature == null) {
-            throw new LicenseException();
+        if (!features.containsKey(SIGNATURE)) {
+            throw new LicenseException("Missing signature");
         }
-        features.remove(SIGNATURE);
+
+        String signature = (String) features.remove(SIGNATURE);
         String encoded = features.toString();
 
         if (!verify(encoded.getBytes(), signature, readPublicKey(PUBLIC_KEY_FILE))) {
