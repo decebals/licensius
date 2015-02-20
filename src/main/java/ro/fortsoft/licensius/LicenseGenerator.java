@@ -32,8 +32,10 @@ public class LicenseGenerator {
 
     public static String generateLicense(Properties features, OutputStream output, String privateKeyFile) throws LicenseException {
         try {
+            PrivateKey privateKey = readPrivateKey(privateKeyFile);
+
             String encoded = features.toString();
-            String signature = sign(encoded.getBytes(), readPrivateKey(privateKeyFile));
+            String signature = sign(encoded.getBytes(), privateKey);
 
             Properties properties = new OrderedProperties();
             properties.putAll(features);

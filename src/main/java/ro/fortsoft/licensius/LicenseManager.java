@@ -66,7 +66,9 @@ public class LicenseManager {
         String signature = (String) features.remove(SIGNATURE);
         String encoded = features.toString();
 
-        if (!verify(encoded.getBytes(), signature, readPublicKey(PUBLIC_KEY_FILE))) {
+        PublicKey publicKey = readPublicKey(PUBLIC_KEY_FILE);
+
+        if (!verify(encoded.getBytes(), signature, publicKey)) {
             throw new LicenseException();
         }
 
