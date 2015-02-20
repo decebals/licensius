@@ -21,6 +21,8 @@ be a `license.dat` file.
 
 By default Licensius using DSA algorithm (the key length in bits is 1024) for generating keys (private and public).
 
+Licensius uses `X509EncodedKeySpec` to encode the public key and `PKCS8EncodedKeySpec` to encode the private key. Both `public.key` file and `private.key` file are binaries.
+
 In `example` folder you have an example for license template (input) and and its associated license (output).  
 
 The content for `template.dat` can be (see example folder):
