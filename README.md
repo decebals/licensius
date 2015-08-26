@@ -1,5 +1,8 @@
 Tiny License Framework for Java
 =====================
+[![Travis CI Build Status](https://travis-ci.org/decebals/licensius.png)](https://travis-ci.org/decebals/licensius)
+[![Maven Central](http://img.shields.io/maven-central/v/ro.fortsoft.licensius/licensius.svg)](http://search.maven.org/#search|ga|1|ro.fortsoft.licensius)
+
 It's an open source (Apache license) tiny (only 14KB) license framework in Java, with zero dependencies and a quick learning curve.
 
 How to use
