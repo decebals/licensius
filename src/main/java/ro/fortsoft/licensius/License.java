@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -66,9 +67,9 @@ public class License {
 
     public List<String> getFeatureNames() {
         List<String> featureNames = new ArrayList<>();
-        Set keys = features.keySet();
-        for (Object key : keys) {
-            featureNames.add((String) key);
+        Enumeration<?> keys = features.propertyNames();
+        while (keys.hasMoreElements()) {
+            featureNames.add((String) keys.nextElement());
         }
 
         return featureNames;
