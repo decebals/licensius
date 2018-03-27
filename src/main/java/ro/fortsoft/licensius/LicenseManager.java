@@ -28,8 +28,8 @@ import java.util.Properties;
  */
 public class LicenseManager {
 
-    public static final String LICENSE_FILE = "license.dat";
-    public static final String PUBLIC_KEY_FILE = "public.key";
+    public static String LICENSE_FILE = "license.dat";
+    public static String PUBLIC_KEY_FILE = "public.key";
     public static final String SIGNATURE = "signature";
 
     private static LicenseManager licenseManager = new LicenseManager();
