@@ -29,14 +29,14 @@ Licensius uses `X509EncodedKeySpec` to encode the public key and `PKCS8EncodedKe
 In `example` folder you have an example for license template (input) and and its associated license (output).  
 
 The content for `template.dat` can be (see example folder):
-```
+```properties
 expirationDate=9/12/2020
 companyName=HomeOffice
 emailAddress=office@home.ro
 ```
 
 In this case the content for `license.dat` (the license) is:
-```
+```properties
 #License file
 #Fri Feb 13 14:57:14 EET 2015
 expirationDate=9/12/2020
