@@ -15,12 +15,12 @@ licenseManager.isValidLicense(license);
 
 In `private.key` file exists the private key used to create the license.  
 In `public.key` file exists the public key used to validate the license.  
-The public key (public.key) is delivered with your application jar.  
+The public key (`public.key`) is delivered with your application jar.  
 
 To create a new license, you must create a template file (`template.dat`) that contains all license's components
 and to run `LicenseTool`.  
-If the private key or the public key doesn't exists then licensius will create these files for you. The license will
-be a `license.dat` file.  
+If the private key or the public key doesn't exists then Licensius will create these files for you. 
+The license will be a `license.dat` file.  
 
 By default Licensius using DSA algorithm (the key length in bits is 1024) for generating keys (private and public).
 
